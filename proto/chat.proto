@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package chatpb;
+
+service ChatServer {
+    rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+    rpc ReceiveMessages (ReceiveMessagesRequest) returns (ReceiveMessagesResponse);
+}
+
+message SendMessageRequest {
+    Message message = 1;
+}
+
+message SendMessageResponse {
+    repeated Message messages = 1;
+}
+
+message ReceiveMessagesRequest {
+}
+
+message ReceiveMessagesResponse {
+    repeated Message messages = 1;
+}
+
+message Message {
+    string sender = 1;
+    string text = 2;
+}
